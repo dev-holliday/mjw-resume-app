@@ -16,9 +16,9 @@
             <p class="text-muted mb-3">Choose an option to continue</p>
 
             <div class="overlay-buttons d-grid">
-                <button class="btn btn-primary" onclick="overlayAction('one')">Guest</button>
-                <button class="btn btn-secondary">Potential Employer</button>
-                <button class="btn btn-info text-white">Admin</button>
+                <button class="btn btn-primary" onclick="overlayAction('Guest')">Guest</button>
+                <button class="btn btn-secondary" onclick="employerSignIn('Employer')">Potential Employer</button>
+                <button class="btn btn-info text-white" onclick="overlayAction('Admin')">Admin</button>
             </div>
         </div>
     </div>
@@ -28,7 +28,7 @@
             <!-- <img  src="/docs/5.1/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
             <h1 class="display-6 fw-bold text-primary">Welcome to Matt Weigand's Resume Application</h1>            
           </div>
-        <form method="post" action="hello">
+        <form method="post" action="resume">
             {% csrf_token %}
             <div class="col-md-6 mx-auto text-center">
                 <label for="name" class="form-label fw-bold fs-5">Please hit 'See Resume' button</label>           
@@ -45,5 +45,10 @@
     function overlayAction(option) {
         console.log("User clicked: " + option);
          document.getElementById("intro-overlay").style.display = "none";
+    }
+
+    function employerSignIn(option) {
+        console.log("Employer sign-in clicked");
+        window.location.href = 'employer';
     }
 </script>
