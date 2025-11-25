@@ -4,12 +4,15 @@
     <title>Weigand's Website</title>
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="{% static 'login.css' %}">
     <link rel="icon"href="{% static 'favicon.ico' %}">
 </head>
 <html>
-   <body>
-     <main>
-          <!-- OVERLAY -->
+<body>
+
+<main>
+
+    <!-- INTRO OVERLAY -->
     <div id="intro-overlay">
         <div class="overlay-box">
             <h3>Welcome</h3>
@@ -17,38 +20,79 @@
 
             <div class="overlay-buttons d-grid">
                 <button class="btn btn-primary" onclick="overlayAction('Guest')">Guest</button>
-                <button class="btn btn-secondary" onclick="employerSignIn('Employer')">Potential Employer</button>
+                <button class="btn btn-secondary" onclick="employerSignIn()">Potential Employer</button>
                 <button class="btn btn-info text-white" onclick="overlayAction('Admin')">Admin</button>
             </div>
         </div>
     </div>
 
-        <div class="px-4 py-3 my-2 text-center">
-            <img class="d-block mx-auto mb-4" src="{% static 'images/azure-icon.svg' %}" alt="Azure Logo" width="192" height="192"/>
-            <!-- <img  src="/docs/5.1/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
-            <h1 class="display-6 fw-bold text-primary">Welcome to Matt Weigand's Resume Application</h1>            
-          </div>
-        <form method="post" action="resume">
-            {% csrf_token %}
-            <div class="col-md-6 mx-auto text-center">
-                <label for="name" class="form-label fw-bold fs-5">Please hit 'See Resume' button</label>           
-                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center my-2">
-                  <button type="submit" class="btn btn-primary btn-lg px-4 gap-3">See Resume</button>
-                </div>            
+    <!-- PAGE CONTENT -->
+    <div class="px-4 py-3 my-2 text-center">
+        <img class="d-block mx-auto mb-4" src="{% static 'images/azure-icon.svg' %}" alt="Azure Logo" width="192" height="192"/>
+        <h1 class="display-6 fw-bold text-primary">Welcome to Matt Weigand's Resume Application</h1>
+    </div>
+
+    <form method="post" action="resume">
+        {% csrf_token %}
+        <div class="col-md-6 mx-auto text-center">
+            <label for="name" class="form-label fw-bold fs-5">Please hit 'See Resume' button</label>
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center my-2">
+                <button type="submit" class="btn btn-primary btn-lg px-4 gap-3">See Resume</button>
             </div>
+        </div>
+    </form>
+
+</main>
+
+<!-- EMPLOYER SIGN-IN MODAL -->
+<div class="modal fade" id="employerModal" tabindex="-1" aria-labelledby="employerModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title" id="employerModalLabel">Employer Sign-In</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body">
+        <p class="mb-3">Please enter the employer access key.</p>
+
+        <form method="post" action="employer">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label class="form-label">Access Key</label>
+            <input type="password" class="form-control" name="employer_key" required>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Sign In</button>
         </form>
-     </main>      
-   </body>
-</html>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
     function overlayAction(option) {
         console.log("User clicked: " + option);
-         document.getElementById("intro-overlay").style.display = "none";
+        document.getElementById("intro-overlay").style.display = "none";
     }
 
-    function employerSignIn(option) {
+    function employerSignIn() {
         console.log("Employer sign-in clicked");
-        window.location.href = 'employer';
+
+        // Hide overlay
+        document.getElementById("intro-overlay").style.display = "none";
+
+        // Open Bootstrap modal
+        const modalElement = document.getElementById('employerModal');
+        const modal = new bootstrap.Modal(modalElement);
+        modal.show();
     }
 </script>
+
+</body>
+</html>
+<!DOCTYPE html>

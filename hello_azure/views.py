@@ -27,6 +27,6 @@ def employer_view(request):
     if request.method == 'POST':
         # Placeholder for employer sign-in logic
         print("Employer sign-in request received")
-        return HttpResponse("Employer sign-in functionality is under construction.")
+        return render(request, 'hello_azure/resume_employer.html')
     else:
         return render(request, 'hello_azure/resume_employer.html')
