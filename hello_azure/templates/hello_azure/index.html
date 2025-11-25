@@ -3,11 +3,26 @@
 <head>
     <title>Hello Azure - Python Quickstart</title>
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
     <link rel="icon"href="{% static 'favicon.ico' %}">
 </head>
 <html>
    <body>
      <main>
+          <!-- OVERLAY -->
+    <div id="intro-overlay">
+        <div class="overlay-box">
+            <h3>Welcome</h3>
+            <p class="text-muted mb-3">Choose an option to continue</p>
+
+            <div class="overlay-buttons d-grid">
+                <button class="btn btn-primary" onclick="overlayAction('one')">Guest</button>
+                <button class="btn btn-secondary">Potential Employer</button>
+                <button class="btn btn-info text-white">Admin</button>
+            </div>
+        </div>
+    </div>
+
         <div class="px-4 py-3 my-2 text-center">
             <img class="d-block mx-auto mb-4" src="{% static 'images/azure-icon.svg' %}" alt="Azure Logo" width="192" height="192"/>
             <!-- <img  src="/docs/5.1/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
@@ -25,3 +40,10 @@
      </main>      
    </body>
 </html>
+
+<script>
+    function overlayAction(option) {
+        console.log("User clicked: " + option);
+         document.getElementById("intro-overlay").style.display = "none";
+    }
+</script>
