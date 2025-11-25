@@ -9,7 +9,7 @@ def index(request):
 @csrf_exempt
 def hello(request):
     if request.method == 'POST':
-        name = request.POST.get('name')
+        name = "Matthew Weigand"  # Fixed name for resume viewing
         
         if name is None or name == '':
             print("Request for hello page received with no name or blank name -- redirecting")
