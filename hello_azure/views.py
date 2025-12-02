@@ -37,7 +37,8 @@ def api_resume_data(request):
     """API endpoint to return resume data as JSON"""
     if request.method == 'GET':
         resume_data = {
-            'name': 'Matthew Weigand',
+            'message': 
+            {'name': 'Matthew Weigand',
             'title': 'Lead Digital Engineer',
             'location': 'Milwaukee, WI',
             'email': 'weigand43@gmail.com',
@@ -65,7 +66,7 @@ def api_resume_data(request):
                     'period': 'March 2022 – April 2023'
                 }
             ]
-        }
+        }}
         return JsonResponse(resume_data)
     return JsonResponse({'error': 'Method not allowed'}, status=405)
 
