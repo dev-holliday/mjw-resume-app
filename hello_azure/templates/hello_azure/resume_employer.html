@@ -1,213 +1,168 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Matthew Weigand – Resume</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
+  <title>Word Checker</title>
   <style>
-    /* ---- GLOBAL STYLES ---- */
-    :root {
-      --text: #e5e7eb;
-      --subtext: #9ca3af;
-      --accent: #60a5fa;
-      --border: #1f2937;
-      --bg: #020617;
-      --page: #020617;
-    }
-
     body {
-      font-family: "Segoe UI", Arial, sans-serif;
-      background: radial-gradient(circle at top, #0b1120 0, var(--page) 45%);
-      margin: 0;
-      padding: 32px 0;
-      color: var(--text);
+      font-family: Arial, sans-serif;
+      margin: 40px;
     }
 
-    .container {
-      max-width: 900px;
-      margin: auto;
-      background: #020617;
-      padding: 40px 50px;
-      border: 1px solid var(--border);
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.75);
-      border-radius: 12px;
+    label, input, button {
+      font-size: 1rem;
     }
 
-    h1, h2, h3 {
-      margin: 0;
-      font-weight: 600;
-      color: var(--text);
+    #matchedWords {
+      margin-top: 20px;
+      font-weight: bold;
     }
 
-    h2 {
-      margin-top: 28px;
-      margin-bottom: 8px;
-      font-size: 15px;
-      letter-spacing: 0.12em;
-      color: var(--accent);
-      text-transform: uppercase;
-    }
-
-    p, li {
-      font-size: 14px;
-      line-height: 1.6;
-    }
-
-    .section {
-      margin-bottom: 26px;
-    }
-
-    .header {
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 16px;
-      margin-bottom: 26px;
-    }
-
-    .subtext {
-      color: var(--subtext);
-    }
-
-    .job {
-      margin-bottom: 18px;
-    }
-
-    .job-title {
-      font-weight: 600;
-      font-size: 15px;
-    }
-
-    .job-meta {
-      font-size: 13px;
-      color: var(--subtext);
-      margin-bottom: 6px;
-    }
-
-    ul {
-      margin: 6px 0 0 18px;
-    }
-
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    a:hover,
-    a:focus {
-      text-decoration: underline;
+    .word-item {
+      padding: 4px 0;
     }
   </style>
 </head>
-
 <body>
-  <div class="container">
 
-    <!-- HEADER -->
-    <div class="header">
-      <h1>Matthew Weigand</h1>
-      <p class="subtext">Milwaukee, WI • (260) 467-3453 • 
-        <a href="mailto:weigand43@gmail.com">weigand43@gmail.com</a>
-      </p>
-    </div>
+  <h1>Word Checker</h1>
 
-    <!-- SUMMARY -->
-    <div class="section">
-      <h2>Career Summary</h2>
-      <p>
-        Software Engineer with over 5 years of experience developing enterprise systems, microservices, 
-        and automation tools with Kotlin, Java, C#, and Python. Skilled in system monitoring, 
-        test-driven development, and cloud-based solutions, with hands-on experience modernizing 
-        legacy applications and supporting production environments.
-      </p>
-    </div>
+  <label for="textInput">Enter text:</label>
+  <input type="text" id="textInput" />
+  <button type="button" onclick="checkWord()">Check</button>
 
-    <!-- SKILLS -->
-    <div class="section">
-      <h2>Skills</h2>
-
-      <ul>
-        <li><strong>Programming Languages:</strong> Java/Kotlin, C#, Python</li>
-        <li><strong>Front-end:</strong> HTML, CSS/SCSS, Angular</li>
-        <li><strong>Agile Development Methodology</strong></li>
-        <li><strong>DevOps & CI/CD:</strong> Jenkins, GitLab CI</li>
-        <li><strong>Development Environments:</strong> IntelliJ, Visual Studio, VS Code</li>
-        <li><strong>Frameworks & Libraries:</strong> Spring Boot, Spring Batch, .NET, Jackson/Gson</li>
-        <li><strong>Databases:</strong> PostgreSQL, MySQL</li>
-        <li><strong>Observability Tools:</strong> Dynatrace, Sumo Logic, DataDog</li>
-        <li><strong>Testing:</strong> JUnit, Mockito, Postman</li>
-      </ul>
-    </div>
-
-    <!-- EXPERIENCE -->
-    <div class="section">
-      <h2>Work Experience</h2>
-
-      <!-- Sonata -->
-      <div class="job">
-        <div class="job-title">Lead Digital Engineer • Sonata Software North America Inc.</div>
-        <div class="job-meta">Client: Bluestem Brands • Eden Prairie, MN • April 2023 – September 2025</div>
-
-        <ul>
-          <li>Designed and deployed microservice-based solutions, heavily reducing manual business intervention of data and files.</li>
-          <li>Integrated system monitoring tools (Sumo, Dynatrace) to monitor and resolve system issues.</li>
-          <li>Mentored and trained new engineers to accelerate onboarding and domain understanding.</li>
-          <li>Automated on-call alert resolution processes, improving incident response times and visibility.</li>
-          <li>Collaborated closely with business/project owners to determine requirements.</li>
-        </ul>
-      </div>
-
-      <!-- Genesis - Bluestem -->
-      <div class="job">
-        <div class="job-title">Software Developer • Genesis10</div>
-        <div class="job-meta">Client: Bluestem Brands • March 2022 – April 2023</div>
-
-        <ul>
-          <li>Transitioned large, legacy applications to microservices.</li>
-          <li>Developed enhancements for Spring Batch applications (Kotlin/Java).</li>
-          <li>Built RESTful endpoints and maintained secure data handling (OAuth 2.0, Keycloak).</li>
-          <li>Improved code quality through architectural discussions and peer reviews.</li>
-        </ul>
-      </div>
-
-      <!-- Genesis - Uline -->
-      <div class="job">
-        <div class="job-meta">Client: Uline • Pleasant Prairie, WI • August 2020 – February 2022</div>
-
-        <ul>
-          <li>Designed, developed, and maintained apps using Spring, Angular, React, and .NET.</li>
-          <li>Built event-driven front-end features using RXJS observables.</li>
-          <li>Assisted in integrating Twilio messaging for real-time shipment tracking updates.</li>
-          <li>Implemented object-oriented design principles and unit testing practices.</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- EDUCATION -->
-    <div class="section">
-      <h2>Education</h2>
-
-      <p><strong>Purdue University – Fort Wayne</strong><br>
-      B.S. in Computer Science • Minor in Mathematics<br>
-      Graduation: August 2020</p>
-    </div>
-
-    <!-- PERSONAL PROJECT -->
-    <div class="section">
-      <h2>Personal Project</h2>
-
-      <p><strong>"Live" Homerun Tracker for Individually Drafted Teams (6/25)</strong></p>
-      <ul>
-        <li>Built a real-time MLB "Homerun Tracker" using Python and Tweepy, consuming MLB Stats API data.</li>
-        <li>Migrated the system to AWS (Lambda, DynamoDB) for improved scalability and availability.</li>
-        <li>Implemented detailed logging and observability for debugging in a stateless architecture.</li>
-        <li>Used open-source MLB Stats API wrappers to reliably support continuous 5-minute polling.</li>
-      </ul>
-    </div>
-
-    <div class="container">
-      <a href="/">Go Back</a>
-    </div>
+  <div id="matchedWords">
+    <h3>Matched Words:</h3>
+    <ul id="wordListDisplay"></ul>
   </div>
+
+  <script>
+    // List of words to validate against
+    const heteronyms = [
+  "absent", 
+  "accent",
+  "addict",
+  "advocate",
+  "affect",
+  "aggregate",
+  "appropriate",
+  "attribute",
+  "backup",
+  "bass",
+  "bow",
+  "buffet",
+  "circuit",
+  "close",
+  "combat",
+  "combine",
+  "compact",
+  "compound",
+  "conduct",
+  "console",
+  "content",
+  "contest",
+  "contract",
+  "convert",
+  "coordinate",
+  "corporate",
+  "corps",
+  "crevice",
+  "croissant",
+  "decrease",
+  "defect",
+  "desert",
+  "digest",
+  "dove",
+  "does",
+  "duplicate",
+  "elaborate",
+  "entrance",
+  "envelope",
+  "excuse",
+  "export",
+  "explode",
+  "extract",
+  "graduate",
+  "groove",
+  "house",
+  "incense",
+  "insert",
+  "insult",
+  "lead",
+  "learned",
+  "live",
+  "minute",
+  "moped",
+  "object",
+  "overlay",
+  "permit",
+  "polish",
+  "present",
+  "progress",
+  "project",
+  "protest",
+  "read",
+  "rebel",
+  "record",
+  "refuse",
+  "reject",
+  "repeat",
+  "rescue",
+  "reside",
+  "resign",
+  "resonate",
+  "resume",
+  "rewind",
+  "rival",
+  "row",
+  "separate",
+  "shelf",
+  "shower",
+  "siphon",
+  "slough",
+  "sow",
+  "subject",
+  "survey",
+  "suspect",
+  "tear",
+  "thorough",
+  "tower",
+  "transfer",
+  "transform",
+  "transport",
+  "upset",
+  "use",
+  "wind",
+  "wound"
+];
+
+    // Words the user has matched so far (no duplicates)
+    const matchedWords = [];
+
+    function checkWord() {
+      const input = document.getElementById('textInput').value.trim().toLowerCase();
+      const displayList = document.getElementById('wordListDisplay');
+
+      if (!input) return;
+
+      // Check if input is in the valid list
+      if (heteronyms.includes(input)) {
+        // Prevent duplicates
+        if (!matchedWords.includes(input)) {
+          matchedWords.push(input);
+
+          // Add new word to the page
+          const li = document.createElement("li");
+          li.textContent = input;
+          li.className = "word-item";
+          displayList.appendChild(li);
+        }
+      }
+
+      // Clear input box after check
+      document.getElementById('textInput').value = "";
+    }
+  </script>
+
 </body>
 </html>
