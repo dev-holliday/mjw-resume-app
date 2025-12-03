@@ -135,5 +135,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:4200',  # Angular dev
-    # later: "https://my-angular-frontend.azurestaticapps.net",
+    'https://courts-app-service-hhgeg8enajdmhqb3.centralus-01.azurewebsites.net' # later: "https://my-angular-frontend.azurestaticapps.net",
+    
 ]
