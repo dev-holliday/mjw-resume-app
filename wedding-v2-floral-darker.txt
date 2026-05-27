@@ -55,6 +55,28 @@
       overflow-x: hidden;
     }
 
+    /* Toned-down floral repeating pattern — layer 1 */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3C!-- central bloom --%3E%3Cellipse cx='90' cy='90' rx='12' ry='5' transform='rotate(0 90 90)' fill='%236b2533' opacity='0.04'/%3E%3Cellipse cx='90' cy='90' rx='12' ry='5' transform='rotate(60 90 90)' fill='%236b2533' opacity='0.04'/%3E%3Cellipse cx='90' cy='90' rx='12' ry='5' transform='rotate(120 90 90)' fill='%236b2533' opacity='0.04'/%3E%3Ccircle cx='90' cy='90' r='3' fill='%234a6a82' opacity='0.05'/%3E%3C!-- curving stems --%3E%3Cpath d='M90 78 Q75 60 60 50' stroke='%234a6a82' stroke-width='0.7' fill='none' opacity='0.04'/%3E%3Cpath d='M90 78 Q105 60 120 50' stroke='%234a6a82' stroke-width='0.7' fill='none' opacity='0.04'/%3E%3Cpath d='M90 102 Q75 120 60 130' stroke='%234a6a82' stroke-width='0.7' fill='none' opacity='0.04'/%3E%3Cpath d='M90 102 Q105 120 120 130' stroke='%234a6a82' stroke-width='0.7' fill='none' opacity='0.04'/%3E%3C!-- small leaves on stems --%3E%3Cellipse cx='72' cy='58' rx='6' ry='2.5' transform='rotate(-40 72 58)' fill='%236b2533' opacity='0.035'/%3E%3Cellipse cx='108' cy='58' rx='6' ry='2.5' transform='rotate(40 108 58)' fill='%236b2533' opacity='0.035'/%3E%3Cellipse cx='72' cy='122' rx='6' ry='2.5' transform='rotate(40 72 122)' fill='%234a6a82' opacity='0.035'/%3E%3Cellipse cx='108' cy='122' rx='6' ry='2.5' transform='rotate(-40 108 122)' fill='%234a6a82' opacity='0.035'/%3E%3C!-- corner buds --%3E%3Ccircle cx='60' cy='50' r='2.5' fill='%236b2533' opacity='0.04'/%3E%3Ccircle cx='120' cy='50' r='2.5' fill='%236b2533' opacity='0.04'/%3E%3Ccircle cx='60' cy='130' r='2' fill='%234a6a82' opacity='0.035'/%3E%3Ccircle cx='120' cy='130' r='2' fill='%234a6a82' opacity='0.035'/%3E%3C!-- tiny dot accents --%3E%3Ccircle cx='45' cy='90' r='1.5' fill='%236b2533' opacity='0.03'/%3E%3Ccircle cx='135' cy='90' r='1.5' fill='%236b2533' opacity='0.03'/%3E%3Ccircle cx='90' cy='45' r='1.5' fill='%234a6a82' opacity='0.03'/%3E%3Ccircle cx='90' cy='135' r='1.5' fill='%234a6a82' opacity='0.03'/%3E%3C/svg%3E");
+      background-size: 180px 180px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Floral pattern — layer 2, offset for density */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cellipse cx='90' cy='90' rx='10' ry='4' transform='rotate(30 90 90)' fill='%234a6a82' opacity='0.03'/%3E%3Cellipse cx='90' cy='90' rx='10' ry='4' transform='rotate(90 90 90)' fill='%234a6a82' opacity='0.03'/%3E%3Cellipse cx='90' cy='90' rx='10' ry='4' transform='rotate(150 90 90)' fill='%234a6a82' opacity='0.03'/%3E%3Ccircle cx='90' cy='90' r='2.5' fill='%236b2533' opacity='0.04'/%3E%3Cpath d='M82 82 Q65 68 52 62' stroke='%236b2533' stroke-width='0.6' fill='none' opacity='0.03'/%3E%3Cpath d='M98 98 Q115 112 128 118' stroke='%236b2533' stroke-width='0.6' fill='none' opacity='0.03'/%3E%3Cellipse cx='58' cy='66' rx='5' ry='2' transform='rotate(-50 58 66)' fill='%234a6a82' opacity='0.03'/%3E%3Cellipse cx='122' cy='114' rx='5' ry='2' transform='rotate(-50 122 114)' fill='%234a6a82' opacity='0.03'/%3E%3C/svg%3E");
+      background-size: 180px 180px;
+      background-position: 90px 90px;
+      pointer-events: none;
+      z-index: 0;
+    }
 
     .page {
       max-width: 680px;
