@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Alex, Matt and Addison — September 25, 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --maroon-deepest:  #2a0f14;
+      --maroon-dark:     #4a1a24;
+      --maroon-base:     #6b2533;
+      --maroon-mid:      #8b3345;
+
+      --slate-deepest:   #1a2a3a;
+      --slate-dark:      #2c4259;
+      --slate-base:      #4a6a82;
+      --slate-mid:       #6d8ea6;
+      --slate-light:     #9fb8ca;
+      --slate-pale:      #c8d9e4;
+      --slate-whisper:   #e4edf3;
+
+      --cream:           #faf6f2;
+      --cream-warm:      #f5ede5;
+      --cream-rose:      #f3eae8;
+
+      --bg-page:         #f0e8e3;
+      --bg-card:         rgba(250, 246, 242, 0.85);
+      --bg-card-slate:   rgba(228, 237, 243, 0.5);
+      --border-color:    rgba(107, 37, 51, 0.18);
+      --border-fine:     rgba(74, 106, 130, 0.2);
+      --border-dotted:   rgba(107, 37, 51, 0.22);
+      --text-primary:    var(--maroon-dark);
+      --text-secondary:  var(--slate-dark);
+      --text-muted:      var(--slate-base);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: #e2d6ce;
+      background-image:
+        radial-gradient(ellipse 80% 50% at 15% 5%, rgba(170, 192, 208, 0.5) 0%, transparent 55%),
+        radial-gradient(ellipse 60% 45% at 85% 90%, rgba(220, 200, 195, 0.6) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 50% at 50% 50%, rgba(230, 220, 214, 0.35) 0%, transparent 60%);
+      min-height: 100vh;
+      font-family: 'Playfair Display', Georgia, serif;
+      color: var(--text-primary);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 3.5rem 1.5rem 6rem;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+
+    .page {
+      max-width: 680px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── Shared card ── */
+    .card {
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-color);
+      border-radius: 3px;
+      position: relative;
+      overflow: hidden;
+      animation: fadeUp 0.8s ease both;
+      box-shadow: 0 2px 20px rgba(74, 26, 36, 0.06);
+    }
+    .card:nth-child(2) { animation-delay: 0.13s; }
+    .card:nth-child(3) { animation-delay: 0.24s; }
+    .card:nth-child(4) { animation-delay: 0.35s; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Floral corner SVGs ── */
+    .floral-corner {
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      pointer-events: none;
+      opacity: 0.3;
+    }
+    .floral-corner.tl { top: -2px; left: -2px; }
+    .floral-corner.tr { top: -2px; right: -2px; transform: scaleX(-1); }
+    .floral-corner.bl { bottom: -2px; left: -2px; transform: scaleY(-1); }
+    .floral-corner.br { bottom: -2px; right: -2px; transform: scale(-1); }
+
+    /* ── Dotted inner border ── */
+    .dotted-inner {
+      border: 1.5px dotted var(--border-dotted);
+      margin: 1.5rem;
+      padding: 2.8rem 2rem;
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    /* ── Typography ── */
+    .label-sm {
+      font-family: 'Italiana', serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--maroon-base);
+      margin-bottom: 0.35rem;
+    }
+
+    .tagline {
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      font-weight: 400;
+    }
+
+    .name-first {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 400;
+      font-style: italic;
+      letter-spacing: 0.06em;
+      color: var(--maroon-dark);
+      line-height: 1.1;
+    }
+
+    .name-last {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--slate-base);
+      letter-spacing: 0.1em;
+      margin-top: 0.3rem;
+    }
+
+    .script-and {
+      font-family: 'Tangerine', cursive;
+      font-size: 4.4rem;
+      font-weight: 700;
+      color: var(--slate-mid);
+      line-height: 1;
+      margin: 0.7rem 0;
+      display: block;
+    }
+
+    .divider {
+      width: 80px;
+      height: 1px;
+      margin: 1.6rem auto;
+      position: relative;
+      overflow: visible;
+    }
+    .divider::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, var(--maroon-base), transparent);
+      opacity: 0.25;
+    }
+    .divider::after {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: 50%;
+      transform: translateX(-50%) rotate(45deg);
+      width: 5px;
+      height: 5px;
+      background: var(--maroon-base);
+      opacity: 0.18;
+    }
+
+    .date-display {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 0.6rem;
+      margin: 0.4rem 0 1.4rem;
+    }
+    .date-month {
+      font-family: 'Italiana', serif;
+      font-size: 0.88rem;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--slate-dark);
+    }
+    .date-day {
+      font-family: 'Tangerine', cursive;
+      font-size: 4.2rem;
+      font-weight: 700;
+      color: var(--maroon-base);
+      line-height: 1;
+    }
+    .date-year {
+      font-family: 'Italiana', serif;
+      font-size: 1rem;
+      letter-spacing: 0.12em;
+      color: var(--slate-dark);
+    }
+
+    .ceremony-line {
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    .venue-block {
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-top: 0.3rem;
+    }
+
+    /* ── Vine divider ── */
+    .vine-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0.5rem 0;
+      opacity: 0.45;
+    }
+    .vine-divider svg { width: 140px; height: 22px; }
+
+    /* ── Details card ── */
+    .back-card {
+      background: linear-gradient(165deg, var(--bg-card-slate) 0%, var(--bg-card) 100%);
+    }
+
+    .card-inner {
+      padding: 2.5rem 3rem;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-title {
+      font-family: 'Italiana', serif;
+      font-size: .88rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--maroon-base);
+      margin-bottom: 1.2rem;
+    }
+
+    .body-italic {
+      font-size: 1.1rem;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--text-primary);
+      line-height: 1.9;
+    }
+
+    .note-italic {
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--text-secondary);
+      line-height: 1.85;
+      margin-top: 1.2rem;
+    }
+
+    /* ── RSVP card ── */
+    .rsvp-card {
+      background: var(--cream-rose);
+    }
+
+    .rsvp-deadline {
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    .rsvp-phone {
+      font-family: 'Italiana', serif;
+      font-size: 1.7rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      color: var(--maroon-dark);
+      margin: 0.8rem 0 0.5rem;
+    }
+
+    .rsvp-instruction {
+      font-size: 0.98rem;
+      font-style: italic;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* ── Gift card ── */
+    .gift-card {
+      background: var(--bg-card);
+    }
+
+    /* ── Closing ── */
+    .closing {
+      text-align: center;
+      font-family: 'Tangerine', cursive;
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--maroon-base);
+      margin-top: 1rem;
+      animation: fadeUp 0.8s 0.5s ease both;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 520px) {
+      .name-first { font-size: 2rem; }
+      .script-and { font-size: 3.4rem; }
+      .date-day   { font-size: 3.2rem; }
+      .card-inner, .dotted-inner { padding-left: 1.2rem; padding-right: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<main class="page" role="main">
+
+  <!-- ═══════════════════════════════════════════════
+       CARD 1 — Invitation Front
+  ═══════════════════════════════════════════════ -->
+  <article class="card" aria-label="Wedding invitation front">
+
+    <!-- Floral corner SVGs — maroon/slate botanical motifs -->
+    <svg class="floral-corner tl" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M4 116 C4 4 116 4 116 4" stroke="#6b2533" stroke-width="1.2" fill="none" opacity="0.5"/>
+      <!-- leaves and buds -->
+      <ellipse cx="18" cy="18" rx="7" ry="4" transform="rotate(-45 18 18)" fill="#4a6a82" opacity="0.4"/>
+      <ellipse cx="18" cy="18" rx="4" ry="7" transform="rotate(-45 18 18)" fill="#6b2533" opacity="0.35"/>
+      <circle cx="18" cy="18" r="2.5" fill="#6b2533" opacity="0.5"/>
+      <!-- stem buds -->
+      <ellipse cx="34" cy="10" rx="5" ry="2.8" transform="rotate(-20 34 10)" fill="#4a6a82" opacity="0.3"/>
+      <circle cx="34" cy="10" r="2" fill="#6b2533" opacity="0.35"/>
+      <ellipse cx="10" cy="34" rx="2.8" ry="5" transform="rotate(-20 10 34)" fill="#4a6a82" opacity="0.3"/>
+      <circle cx="10" cy="34" r="2" fill="#6b2533" opacity="0.35"/>
+      <!-- smaller accent dots -->
+      <circle cx="50" cy="6"  r="1.8" fill="#6b2533" opacity="0.25"/>
+      <circle cx="6"  cy="50" r="1.8" fill="#6b2533" opacity="0.25"/>
+      <circle cx="64" cy="5"  r="1.2" fill="#4a6a82" opacity="0.2"/>
+      <circle cx="5"  cy="64" r="1.2" fill="#4a6a82" opacity="0.2"/>
+      <!-- leafy tendrils -->
+      <path d="M15 48 Q24 34 36 28" stroke="#4a6a82" stroke-width="0.9" fill="none" opacity="0.4"/>
+      <ellipse cx="36" cy="28" rx="4" ry="2.5" transform="rotate(-35 36 28)" fill="#6b2533" opacity="0.3"/>
+      <path d="M48 15 Q34 24 28 36" stroke="#4a6a82" stroke-width="0.9" fill="none" opacity="0.4"/>
+      <ellipse cx="28" cy="36" rx="2.5" ry="4" transform="rotate(-35 28 36)" fill="#6b2533" opacity="0.3"/>
+      <path d="M8 72 Q18 54 32 48" stroke="#6b2533" stroke-width="0.7" fill="none" opacity="0.3"/>
+      <ellipse cx="32" cy="48" rx="3" ry="2" transform="rotate(-30 32 48)" fill="#4a6a82" opacity="0.25"/>
+      <path d="M72 8 Q54 18 48 32" stroke="#6b2533" stroke-width="0.7" fill="none" opacity="0.3"/>
+      <ellipse cx="48" cy="32" rx="2" ry="3" transform="rotate(-30 48 32)" fill="#4a6a82" opacity="0.25"/>
+    </svg>
+    <svg class="floral-corner tr" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M4 116 C4 4 116 4 116 4" stroke="#6b2533" stroke-width="1.2" fill="none" opacity="0.5"/>
+      <ellipse cx="18" cy="18" rx="7" ry="4" transform="rotate(-45 18 18)" fill="#4a6a82" opacity="0.4"/>
+      <ellipse cx="18" cy="18" rx="4" ry="7" transform="rotate(-45 18 18)" fill="#6b2533" opacity="0.35"/>
+      <circle cx="18" cy="18" r="2.5" fill="#6b2533" opacity="0.5"/>
+      <ellipse cx="34" cy="10" rx="5" ry="2.8" transform="rotate(-20 34 10)" fill="#4a6a82" opacity="0.3"/>
+      <circle cx="34" cy="10" r="2" fill="#6b2533" opacity="0.35"/>
+      <ellipse cx="10" cy="34" rx="2.8" ry="5" transform="rotate(-20 10 34)" fill="#4a6a82" opacity="0.3"/>
+      <circle cx="10" cy="34" r="2" fill="#6b2533" opacity="0.35"/>
+      <circle cx="50" cy="6"  r="1.8" fill="#6b2533" opacity="0.25"/>
+      <circle cx="6"  cy="50" r="1.8" fill="#6b2533" opacity="0.25"/>
+      <path d="M15 48 Q24 34 36 28" stroke="#4a6a82" stroke-width="0.9" fill="none" opacity="0.4"/>
+      <ellipse cx="36" cy="28" rx="4" ry="2.5" transform="rotate(-35 36 28)" fill="#6b2533" opacity="0.3"/>
+      <path d="M48 15 Q34 24 28 36" stroke="#4a6a82" stroke-width="0.9" fill="none" opacity="0.4"/>
+    </svg>
+    <svg class="floral-corner bl" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M4 116 C4 4 116 4 116 4" stroke="#6b2533" stroke-width="1.2" fill="none" opacity="0.5"/>
+      <ellipse cx="18" cy="18" rx="7" ry="4" transform="rotate(-45 18 18)" fill="#4a6a82" opacity="0.4"/>
+      <ellipse cx="18" cy="18" rx="4" ry="7" transform="rotate(-45 18 18)" fill="#6b2533" opacity="0.35"/>
+      <circle cx="18" cy="18" r="2.5" fill="#6b2533" opacity="0.5"/>
+      <ellipse cx="34" cy="10" rx="5" ry="2.8" transform="rotate(-20 34 10)" fill="#4a6a82" opacity="0.3"/>
+      <circle cx="34" cy="10" r="2" fill="#6b2533" opacity="0.35"/>
+      <path d="M15 48 Q24 34 36 28" stroke="#4a6a82" stroke-width="0.9" fill="none" opacity="0.4"/>
+      <ellipse cx="36" cy="28" rx="4" ry="2.5" transform="rotate(-35 36 28)" fill="#6b2533" opacity="0.3"/>
+    </svg>
+    <svg class="floral-corner br" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M4 116 C4 4 116 4 116 4" stroke="#6b2533" stroke-width="1.2" fill="none" opacity="0.5"/>
+      <ellipse cx="18" cy="18" rx="7" ry="4" transform="rotate(-45 18 18)" fill="#4a6a82" opacity="0.4"/>
+      <ellipse cx="18" cy="18" rx="4" ry="7" transform="rotate(-45 18 18)" fill="#6b2533" opacity="0.35"/>
+      <circle cx="18" cy="18" r="2.5" fill="#6b2533" opacity="0.5"/>
+      <ellipse cx="34" cy="10" rx="5" ry="2.8" transform="rotate(-20 34 10)" fill="#4a6a82" opacity="0.3"/>
+      <circle cx="34" cy="10" r="2" fill="#6b2533" opacity="0.35"/>
+      <path d="M15 48 Q24 34 36 28" stroke="#4a6a82" stroke-width="0.9" fill="none" opacity="0.4"/>
+      <ellipse cx="36" cy="28" rx="4" ry="2.5" transform="rotate(-35 36 28)" fill="#6b2533" opacity="0.3"/>
+    </svg>
+
+    <div class="dotted-inner">
+      <p class="label-sm">You Are Invited</p>
+      <p class="tagline">to the wedding of</p>
+
+      <div class="name-block">
+        <div class="name-first">Alexandra</div>
+        <div class="name-last">Lindstrom</div>
+      </div>
+
+      <span class="script-and">And</span>
+
+      <div class="name-block">
+        <div class="name-first">Matthew</div>
+        <div class="name-last">Weigand</div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="date-display">
+        <span class="date-month">Sept</span>
+        <span class="date-day">25</span>
+        <span class="date-year">2026</span>
+      </div>
+
+      <div class="divider"></div>
+
+      <p class="ceremony-line">Ceremony starting at 5:00 PM</p>
+      <p class="ceremony-line">Casual reception following immediately after until 10:00 PM</p>
+
+      <div class="vine-divider" aria-hidden="true">
+        <svg viewBox="0 0 140 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 11 Q20 4 40 11 Q60 18 80 11 Q100 4 120 11 Q130 14 140 11" stroke="#6b2533" stroke-width="0.8" fill="none" opacity="0.4"/>
+          <!-- leaf pairs along vine -->
+          <ellipse cx="25" cy="7" rx="4" ry="2" transform="rotate(-25 25 7)" fill="#4a6a82" opacity="0.35"/>
+          <ellipse cx="55" cy="15" rx="4" ry="2" transform="rotate(20 55 15)" fill="#6b2533" opacity="0.3"/>
+          <ellipse cx="85" cy="7" rx="4" ry="2" transform="rotate(-20 85 7)" fill="#4a6a82" opacity="0.35"/>
+          <ellipse cx="115" cy="13" rx="3.5" ry="1.8" transform="rotate(15 115 13)" fill="#6b2533" opacity="0.3"/>
+          <!-- small buds -->
+          <circle cx="40" cy="11" r="2" fill="#6b2533" opacity="0.4"/>
+          <circle cx="80" cy="11" r="2" fill="#4a6a82" opacity="0.35"/>
+        </svg>
+      </div>
+
+      <p class="venue-block">
+        South Shore Pavilion<br>
+        2900 S Shore Dr.<br>
+        Milwaukee, WI 53207
+      </p>
+    </div>
+  </article>
+
+  <!-- ═══════════════════════════════════════════════
+       CARD 2 — Details (Back of card)
+  ═══════════════════════════════════════════════ -->
+  <article class="card back-card" aria-label="Wedding details">
+    <div class="card-inner">
+      <p class="label-sm" style="margin-bottom:0.3rem">We Hope You Can Join Us!</p>
+
+      <div class="divider" style="margin-top:1rem"></div>
+
+      <p class="section-title">Details</p>
+      <p class="body-italic">
+        Casual attire. <br>
+        The night will include appetizers, drinks,<br>
+        a buffet dinner, and dancing.<br>
+        Feel free to come and go as you please!
+      </p>
+    </div>
+  </article>
+
+  <!-- ═══════════════════════════════════════════════
+       CARD 3 — RSVP
+  ═══════════════════════════════════════════════ -->
+  <article class="card rsvp-card" aria-label="RSVP information">
+    <div class="card-inner">
+      <p class="section-title">RSVP</p>
+      <p class="rsvp-deadline">
+        Please RSVP by August 9th, 2026<br>
+        via text message to Alex at
+      </p>
+      <p class="rsvp-phone">(414) 828-7999</p>
+      <p class="rsvp-instruction">
+        In your RSVP, please include the names of guests attending.
+      </p>
+
+      <div class="divider"></div>
+    </div>
+  </article>
+
+  <!-- ═══════════════════════════════════════════════
+       CARD 4 — Gift Note
+  ═══════════════════════════════════════════════ -->
+  <article class="card gift-card" aria-label="Gift preferences">
+    <div class="card-inner">
+      <p class="body-italic">
+        We're so excited to celebrate with you!
+      </p>
+      <p class="note-italic">
+        If you're considering a gift to help us on our way,
+        in place of physical gifts, we would find a monetary
+        contribution toward our future together most helpful.
+      </p>
+    </div>
+  </article>
+
+</main>
+
+<p class="closing" aria-label="Closing">With Love</p>
+
+</body>
+</html>
