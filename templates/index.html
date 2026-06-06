@@ -55,7 +55,6 @@
       overflow-x: hidden;
     }
 
-
     .page {
       max-width: 680px;
       width: 100%;
@@ -79,6 +78,7 @@
     .card:nth-child(2) { animation-delay: 0.13s; }
     .card:nth-child(3) { animation-delay: 0.24s; }
     .card:nth-child(4) { animation-delay: 0.35s; }
+    .card:nth-child(5) { animation-delay: 0.44s; }
 
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(20px); }
@@ -305,6 +305,219 @@
       background: var(--bg-card);
     }
 
+    /* ── RSVP Button ── */
+    .rsvp-btn-wrap {
+      margin-top: 1.6rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .rsvp-btn {
+      font-family: 'Italiana', serif;
+      font-size: 1rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--cream);
+      background: var(--maroon-base);
+      border: 1.5px solid var(--maroon-dark);
+      padding: 0.85rem 2.6rem;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s ease, transform 0.15s ease, box-shadow 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+      box-shadow: 0 3px 14px rgba(107, 37, 51, 0.22);
+    }
+    .rsvp-btn::before {
+      content: '';
+      position: absolute;
+      inset: 3px;
+      border: 1px dotted rgba(250, 246, 242, 0.25);
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    .rsvp-btn::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: -100%;
+      width: 60px;
+      height: 200%;
+      background: rgba(255,255,255,0.12);
+      transform: translateY(-50%) skewX(-20deg);
+      transition: left 0.5s ease;
+    }
+    .rsvp-btn:hover {
+      background: var(--maroon-dark);
+      box-shadow: 0 5px 24px rgba(107, 37, 51, 0.35);
+      transform: translateY(-1px);
+    }
+    .rsvp-btn:hover::after {
+      left: 140%;
+    }
+    .rsvp-btn:active {
+      transform: translateY(0px);
+    }
+
+    /* ── Modal overlay ── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(42, 15, 20, 0.55);
+      backdrop-filter: blur(4px);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease;
+    }
+    .modal-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .modal {
+      background: var(--cream);
+      border: 1.5px solid var(--border-color);
+      box-shadow: 0 20px 60px rgba(42, 15, 20, 0.25);
+      max-width: 460px;
+      width: 100%;
+      position: relative;
+      transform: translateY(28px) scale(0.97);
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .modal-overlay.open .modal {
+      transform: translateY(0) scale(1);
+    }
+
+    .modal-inner {
+      border: 1.5px dotted var(--border-dotted);
+      margin: 1.2rem;
+      padding: 2.2rem 2rem 2rem;
+      text-align: center;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: 'Italiana', serif;
+      font-size: 1.4rem;
+      color: var(--text-muted);
+      line-height: 1;
+      padding: 0.2rem 0.4rem;
+      transition: color 0.2s;
+    }
+    .modal-close:hover { color: var(--maroon-base); }
+
+    .modal-title {
+      font-family: 'Tangerine', cursive;
+      font-size: 3.2rem;
+      font-weight: 700;
+      color: var(--maroon-base);
+      line-height: 1.1;
+      margin-bottom: 0.2rem;
+    }
+
+    .modal-subtitle {
+      font-family: 'Italiana', serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1.8rem;
+    }
+
+    /* ── Form fields ── */
+    .field {
+      margin-bottom: 1.2rem;
+      text-align: left;
+    }
+
+    .field label {
+      display: block;
+      font-family: 'Italiana', serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--maroon-base);
+      margin-bottom: 0.4rem;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      background: rgba(250,246,242,0.7);
+      border: 1px solid var(--border-color);
+      border-bottom: 1.5px solid var(--maroon-base);
+      padding: 0.6rem 0.7rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--text-primary);
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+      border-radius: 0;
+      appearance: none;
+    }
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      background: rgba(250,246,242,1);
+      border-color: var(--maroon-base);
+      border-bottom-color: var(--maroon-dark);
+    }
+    .field textarea {
+      resize: vertical;
+      min-height: 68px;
+    }
+
+    .field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem;
+    }
+
+    .submit-btn {
+      font-family: 'Italiana', serif;
+      font-size: 0.92rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--cream);
+      background: var(--maroon-base);
+      border: 1.5px solid var(--maroon-dark);
+      padding: 0.8rem 2.2rem;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 0.5rem;
+      transition: background 0.2s, box-shadow 0.2s;
+      box-shadow: 0 2px 12px rgba(107, 37, 51, 0.2);
+    }
+    .submit-btn:hover {
+      background: var(--maroon-dark);
+      box-shadow: 0 4px 20px rgba(107, 37, 51, 0.3);
+    }
+    .submit-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .error-msg {
+      font-size: 0.88rem;
+      font-style: italic;
+      color: #c0392b;
+      margin-top: 0.8rem;
+      display: none;
+    }
+
     /* ── Closing ── */
     .closing {
       text-align: center;
@@ -324,6 +537,8 @@
       .script-and { font-size: 3.4rem; }
       .date-day   { font-size: 3.2rem; }
       .card-inner, .dotted-inner { padding-left: 1.2rem; padding-right: 1.2rem; }
+      .field-row { grid-template-columns: 1fr; }
+      .modal-inner { padding: 1.8rem 1.2rem 1.5rem; }
     }
   </style>
 </head>
@@ -331,29 +546,21 @@
 
 <main class="page" role="main">
 
-  <!-- ═══════════════════════════════════════════════
-       CARD 1 — Invitation Front
-  ═══════════════════════════════════════════════ -->
+  <!-- CARD 1 — Invitation Front -->
   <article class="card" aria-label="Wedding invitation front">
-
-    <!-- Floral corner SVGs — maroon/slate botanical motifs -->
     <svg class="floral-corner tl" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <path d="M4 116 C4 4 116 4 116 4" stroke="#6b2533" stroke-width="1.2" fill="none" opacity="0.5"/>
-      <!-- leaves and buds -->
       <ellipse cx="18" cy="18" rx="7" ry="4" transform="rotate(-45 18 18)" fill="#4a6a82" opacity="0.4"/>
       <ellipse cx="18" cy="18" rx="4" ry="7" transform="rotate(-45 18 18)" fill="#6b2533" opacity="0.35"/>
       <circle cx="18" cy="18" r="2.5" fill="#6b2533" opacity="0.5"/>
-      <!-- stem buds -->
       <ellipse cx="34" cy="10" rx="5" ry="2.8" transform="rotate(-20 34 10)" fill="#4a6a82" opacity="0.3"/>
       <circle cx="34" cy="10" r="2" fill="#6b2533" opacity="0.35"/>
       <ellipse cx="10" cy="34" rx="2.8" ry="5" transform="rotate(-20 10 34)" fill="#4a6a82" opacity="0.3"/>
       <circle cx="10" cy="34" r="2" fill="#6b2533" opacity="0.35"/>
-      <!-- smaller accent dots -->
       <circle cx="50" cy="6"  r="1.8" fill="#6b2533" opacity="0.25"/>
       <circle cx="6"  cy="50" r="1.8" fill="#6b2533" opacity="0.25"/>
       <circle cx="64" cy="5"  r="1.2" fill="#4a6a82" opacity="0.2"/>
       <circle cx="5"  cy="64" r="1.2" fill="#4a6a82" opacity="0.2"/>
-      <!-- leafy tendrils -->
       <path d="M15 48 Q24 34 36 28" stroke="#4a6a82" stroke-width="0.9" fill="none" opacity="0.4"/>
       <ellipse cx="36" cy="28" rx="4" ry="2.5" transform="rotate(-35 36 28)" fill="#6b2533" opacity="0.3"/>
       <path d="M48 15 Q34 24 28 36" stroke="#4a6a82" stroke-width="0.9" fill="none" opacity="0.4"/>
@@ -431,12 +638,10 @@
       <div class="vine-divider" aria-hidden="true">
         <svg viewBox="0 0 140 22" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M0 11 Q20 4 40 11 Q60 18 80 11 Q100 4 120 11 Q130 14 140 11" stroke="#6b2533" stroke-width="0.8" fill="none" opacity="0.4"/>
-          <!-- leaf pairs along vine -->
           <ellipse cx="25" cy="7" rx="4" ry="2" transform="rotate(-25 25 7)" fill="#4a6a82" opacity="0.35"/>
           <ellipse cx="55" cy="15" rx="4" ry="2" transform="rotate(20 55 15)" fill="#6b2533" opacity="0.3"/>
           <ellipse cx="85" cy="7" rx="4" ry="2" transform="rotate(-20 85 7)" fill="#4a6a82" opacity="0.35"/>
           <ellipse cx="115" cy="13" rx="3.5" ry="1.8" transform="rotate(15 115 13)" fill="#6b2533" opacity="0.3"/>
-          <!-- small buds -->
           <circle cx="40" cy="11" r="2" fill="#6b2533" opacity="0.4"/>
           <circle cx="80" cy="11" r="2" fill="#4a6a82" opacity="0.35"/>
         </svg>
@@ -450,15 +655,11 @@
     </div>
   </article>
 
-  <!-- ═══════════════════════════════════════════════
-       CARD 2 — Details (Back of card)
-  ═══════════════════════════════════════════════ -->
+  <!-- CARD 2 — Details -->
   <article class="card back-card" aria-label="Wedding details">
     <div class="card-inner">
       <p class="label-sm" style="margin-bottom:0.3rem">We Hope You Can Join Us!</p>
-
       <div class="divider" style="margin-top:1rem"></div>
-
       <p class="section-title">Details</p>
       <p class="body-italic">
         Casual attire. <br>
@@ -469,9 +670,7 @@
     </div>
   </article>
 
-  <!-- ═══════════════════════════════════════════════
-       CARD 3 — RSVP
-  ═══════════════════════════════════════════════ -->
+  <!-- CARD 3 — RSVP -->
   <article class="card rsvp-card" aria-label="RSVP information">
     <div class="card-inner">
       <p class="section-title">RSVP</p>
@@ -485,12 +684,17 @@
       </p>
 
       <div class="divider"></div>
+
+      <!-- ✦ RSVP Button ✦ -->
+      <div class="rsvp-btn-wrap">
+        <button class="rsvp-btn" id="openRsvpBtn" aria-haspopup="dialog">
+          RSVP Online
+        </button>
+      </div>
     </div>
   </article>
 
-  <!-- ═══════════════════════════════════════════════
-       CARD 4 — Gift Note
-  ═══════════════════════════════════════════════ -->
+  <!-- CARD 4 — Gift Note -->
   <article class="card gift-card" aria-label="Gift preferences">
     <div class="card-inner">
       <p class="body-italic">
@@ -508,5 +712,120 @@
 
 <p class="closing" aria-label="Closing">With Love</p>
 
+<!-- ═══════════════════════════════════════════════
+     RSVP Modal
+═══════════════════════════════════════════════ -->
+<div class="modal-overlay" id="rsvpModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal">
+    <button class="modal-close" id="closeModal" aria-label="Close RSVP form">✕</button>
+    <div class="modal-inner">
+      <div class="modal-title" id="modalTitle">RSVP</div>
+      <div class="modal-subtitle">September 25, 2026</div>
+
+      <div id="rsvpFormWrap">
+        <div class="field">
+          <label for="firstName">First Name</label>
+          <input type="text" id="firstName" name="first_name" placeholder="Your first name" autocomplete="given-name" required />
+        </div>
+        <div class="field">
+          <label for="lastName">Last Name</label>
+          <input type="text" id="lastName" name="last_name" placeholder="Your last name" autocomplete="family-name" required />
+        </div>
+        <div class="field">
+          <label for="email">Email <span style="opacity:0.5;font-size:0.85em">(optional)</span></label>
+          <input type="email" id="email" name="email" placeholder="your@email.com" autocomplete="email" />
+        </div>
+        <div class="field">
+          <label for="guestCount">Number of Guests Attending</label>
+          <select id="guestCount" name="guest_count">
+            <option value="1">Just me (1)</option>
+            <option value="2" selected>2 guests</option>
+            <option value="3">3 guests</option>
+            <option value="4">4 guests</option>
+            <option value="5">5 guests</option>
+            <option value="6">6+ guests</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="guestNames">Guest Names</label>
+          <textarea id="guestNames" name="guest_names" placeholder="Please list the names of all guests attending…"></textarea>
+        </div>
+
+        <button class="submit-btn" id="submitRsvp">Send My RSVP</button>
+        <p class="error-msg" id="errorMsg"></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const openBtn   = document.getElementById('openRsvpBtn');
+  const modal     = document.getElementById('rsvpModal');
+  const closeBtn  = document.getElementById('closeModal');
+  const submitBtn = document.getElementById('submitRsvp');
+  const errorMsg  = document.getElementById('errorMsg');
+
+  function openModal() {
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    document.getElementById('firstName').focus();
+  }
+
+  function closeModal() {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  openBtn.addEventListener('click', openModal);
+  closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+  });
+
+  submitBtn.addEventListener('click', async () => {
+    const firstName  = document.getElementById('firstName').value.trim();
+    const lastName   = document.getElementById('lastName').value.trim();
+    const email      = document.getElementById('email').value.trim();
+    const guestCount = document.getElementById('guestCount').value;
+    const guestNames = document.getElementById('guestNames').value.trim();
+
+    errorMsg.style.display = 'none';
+
+    if (!firstName || !lastName) {
+      errorMsg.textContent = 'Please enter your first and last name.';
+      errorMsg.style.display = 'block';
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+
+    try {
+      const res = await fetch('/rsvp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ first_name: firstName, last_name: lastName, email, guest_count: guestCount, guest_names: guestNames })
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        window.location.href = data.redirect;
+      } else {
+        errorMsg.textContent = data.message || 'Something went wrong. Please try again.';
+        errorMsg.style.display = 'block';
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send My RSVP';
+      }
+    } catch (err) {
+      errorMsg.textContent = 'Unable to connect. Please try again.';
+      errorMsg.style.display = 'block';
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send My RSVP';
+    }
+  });
+</script>
 </body>
 </html>
